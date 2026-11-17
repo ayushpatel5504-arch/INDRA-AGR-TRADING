@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var ownDesc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          var protoDesc =
+            typeof Window !== 'undefined' && Window.prototype
+              ? Object.getOwnPropertyDescriptor(Window.prototype, 'fetch')
+              : null;
+          var desc = ownDesc || protoDesc;
+          if (
+            desc &&
+            typeof desc.get === 'function' &&
+            !desc.set &&
+            (!ownDesc || ownDesc.configurable)
+          ) {
+            var originalGet = desc.get;
+            var customFetch;
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: desc.enumerable,
+              get: function () {
+                return customFetch !== undefined ? customFetch : originalGet.call(window);
+              },
+              set: function (nextFetch) {
+                if (typeof nextFetch === 'function') {
+                  customFetch = nextFetch;
+                }
+              },
+            });
+          }
+        } catch (_) {
+          // Ignore non-configurable window environments.
+        }
+      })();
+    </script>
+    <title>INDRA AGR TRADING PVT. LTD. | Connecting Farmers, Growing Businesses.</title>
+    <meta name="description" content="Official corporate website and online job recruitment portal for INDRA AGR TRADING PVT. LTD. Quality, Trust, Growth." />
+    <meta property="og:title" content="INDRA AGR TRADING PVT. LTD. | Connecting Farmers, Growing Businesses." />
+    <meta property="og:description" content="Explore agricultural trading initiatives and career opportunities at INDRA AGR TRADING PVT. LTD." />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-[#F6F4EC] text-[#1B2B22] antialiased selection:bg-[#174D32] selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

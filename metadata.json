@@ -1,0 +1,8 @@
+{
+  "name": "INDRA AGR TRADING PVT. LTD. – Corporate & Recruitment Portal",
+  "description": "Corporate website and online job recruitment management portal for INDRA AGR TRADING PVT. LTD. — Connecting Farmers, Growing Businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
